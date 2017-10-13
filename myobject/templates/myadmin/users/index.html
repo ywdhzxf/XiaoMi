@@ -1,0 +1,156 @@
+{% extends "myadmin/base.html" %}
+
+
+{%block block_name%}
+ <!-- 主体开始 -->
+<div class="span9">
+		<h1>
+			Projects
+		</h1>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						username
+					</th>
+					<th>
+						name
+					</th>
+					
+					<th>
+						sex
+					</th>
+					<th>
+						address
+					</th>
+					<th>
+						code
+					</th>
+					<th>
+						phone
+					</th>
+					<th>
+						email
+					</th>
+					<th>
+						state
+					</th>
+					<th>
+						addtime
+					</th>
+					<th>
+						属性
+					</th>
+					<th>
+						删除
+					</th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				{% for stu in stulist %}
+				<tr>
+					<td>
+						{{ stu.id }}
+					</td>
+					<td>
+						{{ stu.username }}
+					</td>
+					<td>
+						{{ stu.name }}
+					</td>
+					
+					<td>
+						{% if stu.sex == 1 %}
+							男
+						{% else %}
+							女
+						{% endif %}
+					</td>
+					<td>
+						{{ stu.address }}
+					</td>
+					<td>
+						{{ stu.code }}
+					</td>
+					<td>
+						{{ stu.phone }}
+					</td>
+					<td>
+						{{ stu.email }}
+					</td>
+					<td>
+						{% if stu.state == 1 %}
+							启用
+						{% elif stu.state == 2 %}
+							禁用
+						{% else %}
+							后台管理员
+						{% endif %}
+					</td>
+					<td>
+						{{ stu.addtime }}
+					</td>
+
+					<td>
+						<a href="{% url 'myadmin_usersedit' stu.id %}">编辑</a>
+					</td>
+					<td>
+						<a href="{% url 'myadmin_usersdel' stu.id %}">删除</a>
+					</td>
+				</tr>
+				{% endfor %}
+				
+				
+				
+				
+			</tbody>
+		</table>
+		<a class="toggle-link" href="#new-project"><i class="icon-plus"></i> New Project</a>
+		<form id="new-project" class="form-horizontal hidden">
+			<fieldset>
+				<legend>New Project</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">Project Name</label>
+					<div class="controls">
+						<input type="text" class="input-xlarge" id="input01" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select01">Client</label>
+					<div class="controls">
+						<select id="select01"> <option>-- Select client --</option> <option>Bad Robot</option> <option>Evil Genius</option> <option>Monsters Inc</option> </select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="textarea">Project Summary</label>
+					<div class="controls">
+						<textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Create</button> <button class="btn">Cancel</button>
+				</div>
+
+
+			</fieldset>
+		</form>
+	</div>
+	{%for pindex in plist%}
+	{%if pIndex == pindex%}
+	<button>{{pindex}}</button>
+	{%else%}
+	<a href="{% url 'myadmin_usersindex' pindex %}">{{pindex}}</a>
+	
+	{%endif%}
+	{%endfor%}
+
+
+    <!-- 主体结束 -->
+{%endblock%}
+
+
+

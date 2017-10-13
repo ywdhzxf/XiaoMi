@@ -1,0 +1,107 @@
+{% extends "myadmin/base.html" %}
+
+
+{%block block_name%}
+ <!-- 主体开始 -->
+<div class="span9">
+		<h1>
+			Projects
+		</h1>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						分类ID
+					</th>
+					<th>
+						分类名称
+					</th>
+					<th>
+						父类ID
+					</th>
+					<th>
+						分类路径
+					</th>
+					<th>
+						属性
+					</th>
+					<th>
+						删除
+					</th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				{% for stu in stulist %}
+				<tr>
+					<td>
+						{{ stu.id }}
+					</td>
+					<td>
+						{{ stu.pname }}{{ stu.name }}
+					</td>
+					<td>
+						{{ stu.pid }}
+					</td>
+					
+					<td>
+						{{ stu.path }}
+					</td>
+
+					<td>
+						<a href="{% url 'myadmin_typesadd' stu.id %}">添加子类别</a>
+						<a href="{% url 'myadmin_typesedit' stu.id %}">编辑</a>
+					</td>
+					<td>
+						<a href="{% url 'myadmin_typesdel' stu.id %}">删除</a>
+					</td>
+				</tr>
+				{% endfor %}
+				
+				
+				
+				
+			</tbody>
+		</table>
+		<a class="toggle-link" href="#new-project"><i class="icon-plus"></i> New Project</a>
+		<form id="new-project" class="form-horizontal hidden">
+			<fieldset>
+				<legend>New Project</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">Project Name</label>
+					<div class="controls">
+						<input type="text" class="input-xlarge" id="input01" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select01">Client</label>
+					<div class="controls">
+						<select id="select01"> <option>-- Select client --</option> <option>Bad Robot</option> <option>Evil Genius</option> <option>Monsters Inc</option> </select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="textarea">Project Summary</label>
+					<div class="controls">
+						<textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Create</button> <button class="btn">Cancel</button>
+				</div>
+
+
+			</fieldset>
+		</form>
+	</div>
+<!-- 	{%for pindex in plist%}
+	{%if pIndex == pindex%}
+	<button>{{pindex}}</button>
+	{%else%}
+	<button><a href="{% url 'myadmin_typesindex' pindex %}">{{pindex}}</a></button>
+	
+	{%endif%}
+	{%endfor%} -->
+
+
+    <!-- 主体结束 -->
+{%endblock%}

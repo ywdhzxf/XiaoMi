@@ -1,0 +1,164 @@
+{% extends "myadmin/base.html" %}
+
+
+{%block block_name%}
+ <!-- 主体开始 -->
+<div class="span9">
+		<h1>
+			当前订单
+		</h1>
+		<!-- 商品订单 -->
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						会员ID
+					</th>
+					<th>
+						联系人
+					</th>
+					<th>
+						地址
+					</th>
+					<th>
+						邮编
+					</th>
+					<th>
+						电话
+					</th>
+					<th>
+						购买时间
+					</th>
+					<th>
+						总金额
+					</th>
+					<th >
+						状态
+					</th>
+					 <th>
+						属性
+					</th>
+					
+				</tr>
+				
+			</thead>
+			<tbody>
+			
+				<tr>
+					<td>
+						{{ xx.id }}
+					</td>
+					<td>
+						{{ xx.uid }}
+					</td>
+					<td>
+						{{ xx.linkman }}
+					</td>
+					
+					<td>
+						{{ xx.address }}
+					</td>
+					<td>
+						{{ xx.code }}
+					</td>
+					<td>
+						{{ xx.phone }}
+					</td>
+					<td>
+						{{ xx.addtime }}
+					</td>
+					<td>
+						{{ xx.total }}
+					</td>
+					
+					{% csrf_token %}
+					<td class="dropdown">
+						<button class="btn dropdown-toggle sr-only" type="button" id="dropdownMenu1" data-toggle="dropdown"   value='{{ xx.status }}'>
+						{% if xx.status == 0 %}
+								新订单
+						{% elif xx.status == 1 %}
+								已发货
+						{% elif xx.status == 2 %}
+								已收货
+						{% else %}
+								无效订单
+						{% endif %}
+									
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" name='status' value='0'>新订单</a></li>
+						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" name='status' value='1'>已发货</a></li>
+						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" name='status' value='2'>已收货</a></li>
+						    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" name='status' value='3'>无效订单</a></li>
+
+						 </ul>
+					</td>
+					<td>
+						<a href="{% url 'myadmin_ordersedit' xx.id %}" >更改状态</a>
+					</td>
+
+				</tr>
+			
+			</tbody>
+		</table>
+		<!-- 商品详情 -->
+		<h2>当前订单详情</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						订单ID号
+					</th>
+					<th>
+						商品ID号
+					</th>
+					<th>
+						商品名称
+					</th>
+					<th>
+						单价
+					</th>
+					<th>
+						数量
+					</th>
+
+				</tr>
+				
+			</thead>
+			<tbody>
+				{% for stu in stu %}
+				<tr>
+					<td>
+						{{ stu.id }}
+					</td>
+					<td>
+						{{ stu.orderid }}
+					</td>
+					<td>
+						{{ stu.goodsid }}
+					</td>
+					
+					<td>
+						{{ stu.name }}
+					</td>
+					<td>
+						{{ stu.price }}
+					</td>
+					<td>
+						{{ stu.num }}
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+
+    <!-- 主体结束 -->
+{%endblock%}

@@ -1,0 +1,334 @@
+
+{% load static from staticfiles %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城</title>
+    <link rel="shotcut icon" href="{% static 'myweb/image/milogo.png' %}" >
+    <!-- Bootstrap -->
+    <link href="{% static 'myweb/public/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'myweb/public/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'myweb/public/js/bootstrap.min.js' %}"></script>
+
+    
+	
+	{%block block_css%}{%endblock%}
+</head>
+<body>
+
+	<script src="{% static 'myweb/public/js/jquery-1.12.4.min.js' %}"></script>
+	<!-- 导航条 -->
+	<nav class="navbar" role="navigation">
+	    
+		    <!-- 手机展示导航栏 -->
+		    <div class="navbar-header navbar-inverse">
+		        <button type="button" class="navbar-toggle" data-toggle="collapse"
+		                data-target="#example-navbar-collapse">
+		            <span class="sr-only">切换导航</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		        </button>
+		        <!-- visible-md 小手机显示 -->
+		        <a class="navbar-brand visible-md" href="#">小米商城</a>
+		    </div>
+		    <!-- pc端显示导航栏 -->
+		    <div class="collapse navbar-collapse navbar-inverse" id="example-navbar-collapse" >
+		    	<div class="container-fluid" style='padding:0'>
+		    		<div class='row'>
+		    			<!-- 左边的导航栏 -->
+		    			<div class='col-md-6'>
+					        <ul class="nav navbar-nav zdh"  role="navigation">
+					            <li><a href="{% url 'lists' %}">小米商城</a></li>
+					            <!-- <li><a href="./lists">小米商城</a></li> -->
+								<li><a href="#">米聊</a></li>
+								{% for type in typelist %}
+									<li><a href="{% url 'lists' type.id %}">{{ type.name }}</a></li>
+								{% endfor %}
+					        </ul>
+		    			</div>
+		    			<div class='col-md-2'></div>
+		    			<!-- 右边的导航栏 -->
+		    			<div class='col-md-4'>
+					        <ul class="nav navbar-nav navbar-right ydh" role="navigation">
+					        	<li>
+									<a href="{% url 'user' %}">@{{ request.session.yonghu }}</a>
+								</li>
+								<li>
+									<a href="{% url 'logout' %}">退出</a>
+								</li>
+					        	<li><a href="{% url 'login' %}">登录</a></li>
+					        	<li><a href="{% url 'zc' %}">注册</a></li>
+					        	<li><a href="#">消息通知</a></li>
+					        	<li style='background:#424242' class='gwc'>
+						        	<a href="{% url 'gwc' %}"><img src="{%static 'myweb/image/gwc.png' %}">购物车(<span class="span-3 xzspl"> 0 </span>)</a>
+					        	</li>
+					        </ul>
+		    			</div>
+		    			<div class='col-md-1'></div>
+		        		
+				        
+				         <!-- 购物车 -->
+				        <div class="cart">您的购物车没有东西</div>
+				    </div>
+				</div>
+		    </div> 
+	</nav>
+	<!-- 上内容 -->
+	<div class="container" style='padding:0'>
+		<!-- log分类区 -->
+		<div class="lgfl row">
+			<div class='col-md-12'>
+				<div class='row'>
+						<!-- log区 -->
+					<div class='log col-md-2 col-sm-1 col-xs-2' style='padding:0'>
+						<a href="{% url 'index' %}"><img src="{%static 'myweb/image/milogo.png' %}"   class="img-responsive" alt="Responsive image"></a>
+					</div>
+					<div class='col-md-10'>
+						<div class='row'>
+							<!-- 分类区 -->
+							<div class='fl col-md-8 col-sm-11 col-xs-10' style='padding:0'>
+								<ul class="nav nav-pills">
+								  	<li><a href="{% url 'lists' %}">小米手机</a></li>
+								  
+								  	<li><a href="#" id='tx'>平板·笔记本</a></li>
+								  	{% for type in typelist %}
+									<li><a href="{% url 'lists' type.id %}">{{ type.name }}</a></li>
+									{% endfor %}
+
+								 								  
+								  	<li><a href="#">服务</a></li>
+								  	<li><a href="#">社区</a></li>  
+								</ul>
+							</div>
+							<div class='col-md-1'></div>
+							<!-- 表单区 -->
+							<div class='bd col-md-3 col-sm-12 col-xs-12' style='padding:0'>
+								<form>
+									
+									<button class="btn btn-default bd_2" type="button"><span class="glyphicon glyphicon-search"></span>
+									</button>
+									<input type="text" value="小米5特惠" class="form-control bd_1" >	   
+								</form> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 特效 -->
+			<div class='col-md-12 tx1_1'>
+				<div class='row'>
+					
+					<div class='col-md-12 tx1'>
+						<div class='col-md-1'></div>
+						{% for z in lists %}
+						<div class='col-md-2 jdsp'>
+		   		    		<div class="thumbnail">
+				   		      	<a href="{% url 'detail' z.id %}">
+				   		      		<img src= '/static/myadmin/goods/s_{{z.picname}}' alt="...">
+				   		      	</a>
+				   		      	<div class="caption">
+					   		        <p class='jd_zt1'><a class='jd_zt1'>{{ z.goods }}</a></p>
+					   		        <p class='jd_zt2'>{{ z.descr }}</p>
+				   		      		<p class='jd_zt3'>{{ z.price }}<del class='jd_zt4'>2599元</del></p>
+				   		      	</div>
+		   		    		</div>
+						</div>
+						{% endfor %}
+						<div class='col-md-1'></div>
+				
+					</div>
+					
+				</div>
+
+			</div>
+
+			
+		</div>
+		<br>
+
+
+
+{%block block_index%}
+
+
+{%endblock%}
+
+
+	<!-- 底部	 -->
+	<div class="container-fluid footerzt" style='padding:0'>
+		
+		<div class='row'>
+			<!-- 底部区域一 -->
+			<div style='padding:0'>
+				<ul>
+					<li class='col-md-1'></li>
+					<li class=''>
+						<div class='col-md-2 col-sm-4 footer_li'>
+							<a href="#" class='footer_zt1'>
+								<img src="{%static 'myweb/image/c1.png' %}" alt="" class='footer_tp1'>预约维修服务
+							</a>
+						</div>
+					</li>
+
+					<li class=''>
+						<div class='col-md-2 col-sm-4 footer_li'>
+						<a href="#" class='footer_zt1'>
+							<img src="{%static 'myweb/image/c2.png' %}" alt="" class='footer_tp1'>7天无理由退货
+						</a>
+						</div>
+					</li>
+					<li class=''>
+						<div class='col-md-2 col-sm-4 footer_li'>
+						<a href="#" class='footer_zt1'>
+							<img src="{%static 'myweb/image/c3.png' %}" alt="" class='footer_tp1'>15天免费换货
+						</a>
+						</div>
+					</li>
+					<li class=''>
+						<div class='col-md-2 col-sm-4 footer_li'>
+						<a href="#" class='footer_zt1'>
+							<img src="{%static 'myweb/image/c4.png' %}" alt="" class='footer_tp1'>满150元包邮
+						</a>
+						</div>
+					</li>
+					<li class=''>
+						<div class='col-md-2 col-sm-4 footer_li'>
+						<a href="#" class='footer_zt1'>
+							<img src="{%static 'myweb/image/c5.png' %}" alt="" class='footer_tp1'>502余家售后网点
+						</a>
+						</div>
+					</li>
+					<li class='col-md-1'></li>
+				</ul>
+					
+			</div>
+			
+				
+
+			
+		</div>
+		<hr>
+		<!-- 底部区域二 友情链接 -->
+		<footer class="footer ">
+		    <div class="row" style='padding:0'>
+		    	<div class='col-md-1'></div>
+		    	<!-- 左边链接 -->
+		    	<div class='col-md-8' style='padding-left:0'>
+		    		<div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0 bz">
+			            <h3 class='footer2_zt1'>帮助中心</h3>
+			            <ul class="list-unstyled ">
+			              <li><a href="" target="_blank" class='footer2_zt2'>账户管理</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>购物指南</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>订单操作</a></li>
+			            </ul>
+			        </div>
+			        <div class="col-md-2 col-xs-5 col-xs-offset-1  col-md-offset-0">
+			            <h3 class='footer2_zt1'>服务支持</h3>
+			            <ul class="list-unstyled ">
+			              <li><a href="" target="_blank" class='footer2_zt2'>售后政策</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>自助服务</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>相关下载</a></li>
+			            </ul>
+			        </div>
+			        <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+			            <h3 class='footer2_zt1'>线下门店</h3>
+			            <ul class="list-unstyled ">
+			              <li><a href="" target="_blank" class='footer2_zt2'>小米之家</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>服务网点</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>零售网点</a></li>
+			            </ul>
+			        </div>
+			        <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+			            <h3 class='footer2_zt1'>关于小米</h3>
+			            <ul class="list-unstyled ">
+			              <li><a href="" target="_blank" class='footer2_zt2'>了解小米</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>加入小米</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>联系我们</a></li>
+			            </ul>
+			        </div>
+			        <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+			            <h3 class='footer2_zt1'>关注我们</h3>
+			            <ul class="list-unstyled ">
+			              <li><a href="" target="_blank" class='footer2_zt2'>新浪微博</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>小米部落</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>官方微信</a></li>
+			            </ul>
+			        </div>
+			        <div class="col-md-2 col-xs-5 col-xs-offset-1 col-md-offset-0">
+			            <h3 class='footer2_zt1'>特色服务</h3>
+			            <ul class="list-unstyled ">
+			              <li><a href="" target="_blank" class='footer2_zt2'>F码通道</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>礼物码</a></li>
+			              <li><a href="" target="_blank" class='footer2_zt2'>防伪查询</a></li>
+			            </ul>
+			        </div>
+		    	</div>
+		    	<!-- 右边客服 -->
+		    	<div class='col-md-2' style='text-align:center;'>
+		    		<div class="row">
+			      		<div class="col-md-12 col-md-10">
+							<ul class="list-unstyled" style='margin-top:12px'>
+						        <li class='footer2_zt3' style='margin-bottom:5px'>400-100-5678</li>
+						        <li class='footer2_zt2'>周一至周日 9:00-18:00</li>
+						        <li class='footer2_zt2' style='margin-bottom:10px'>(仅收市话费)</li>
+						        <li>
+									<button type="button" class="btn btn-default footer2_zt4">24小时在线客服</button>
+						        </li>
+				       	 	</ul>	
+			      		</div>
+					</div>
+		    	</div>
+		    	<div class='col-md-1'></div>
+			</div>
+		</footer>
+	</div>
+	<!-- 结局	 -->
+	<div class="container-fluid footerzt" style='padding:0;background: #FAFAFA;'>
+		<div class='row' style='margin-top:30px'>
+			<div class='col-md-1'></div>
+			<!-- 左结局 -->
+			<div class='col-md-7 col-sm-10 col-xs-12'>
+				<div class='row'>
+					
+					<div class='col-md-2 col-xs-2'>
+						<a href="#"><img src="{%static 'myweb/image/mi.png' %}" alt=""></a>
+					</div>
+					<div class='col-md-10 col-xs-10'>
+						<ul>
+							<li class='jz_zt1'>小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</li>
+							<li class='jz_zt2'>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号 </li>				
+							<li class='jz_zt2'>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- 右结局 -->
+			<div class='col-md-3 col-sm-12 col-xs-12'>
+				<img class='col-sm-3 col-xs-3 bugt'  src="{%static 'myweb/image/d1.png' %}" alt="">
+				<img class='col-sm-3 col-xs-3'  src="{%static 'myweb/image/d2.png' %}" alt="">
+				<img class='col-sm-3 col-xs-3'  src="{%static 'myweb/image/d3.png' %}" alt="">
+				<img class='col-sm-3 col-xs-3'  src="{%static 'myweb/image/d4.png' %}" alt="">
+			</div>
+			<div class='col-md-1'></div>
+
+		</div>
+		<div class='xm'>探索黑科技,小米为发烧而生!</div>
+	</div>
+
+
+
+
+</body>
+{%block block_js%}{%endblock%}
+</html>

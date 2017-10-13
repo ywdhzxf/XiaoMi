@@ -1,0 +1,80 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<script type="text/javascript" src="{% static 'myweb/public/js/7.js' %}"></script>
+{%endblock%}
+{%block block_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/7.css' %}">
+{%endblock%}
+
+
+{%block block_index%}
+    <div class="container" style='background: #F5F5F5'>
+        <div class="row">
+            <center>
+            <img src="/static/3.jpg" >
+            </center>
+            <div class="col-md-12 hidden-xs" style="height:1rem"></div>
+            <div  class="col-md-6 col-md-offset-3">
+            <form action="{% url 'ordersinsert' %}" method="post">
+            {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputtext1" class='sxm'>会员名称</label>
+                        <input type="text" class="form-control xzk" readonly name="username" value="{{ request.POST.username }}" >
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="exampleInputtext1" class='sxm'>商品信息</label>
+                        <input type="text" class="form-control xzk" readonly name="username" value="{{ request.POST.username }}" >
+                    </div> -->
+                    <div class="form-group">
+                        <label for="exampleInputtext1" class='sxm'>联系人</label>
+                        <input type="text" class="form-control xzk" readonly name="name" value="{{ request.POST.name }}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1" class='sxm'>地址</label>
+                        <input type="text" class="form-control xzk" readonly name="address" value="{{ request.POST.address }}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1" class='sxm'>邮编</label>
+                        <input type="text" class="form-control xzk" readonly name="code" value="{{ request.POST.code }}" >
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputtext1" class='sxm'>联系电话</label>
+                        <input type="text" class="form-control xzk" readonly name="phone" value="{{ request.POST.phone }}" >
+                    </div>
+                    <input type="hidden" class="form-control xzk"  name="addtime" value="{{ request.POST.addtime }}" >
+                   
+                  
+                  
+                    <button type="submit" class="btn btn-primary btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;确&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;认&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="reset" class="btn btn-primary btn-lg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重&nbsp;&nbsp;&nbsp;&nbsp;置&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    <button type="button" class="btn btn-primary btn-lg">&nbsp;&nbsp;&nbsp;接&nbsp;&nbsp;着&nbsp;&nbsp;逛&nbsp;&nbsp;逛&nbsp;&nbsp;&nbsp;</button>
+                    <div style="height:2rem"></div>
+                    <div></div>
+                    <div></div>
+                <br><br><br>
+                <table class="table table-hover width='620' border='1' cellpadding='4'">
+                    <tr class="row">
+                        <th>名称</th>
+                        <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商品</th>
+                        <th>&nbsp;&nbsp;单价</th>
+                        <th>数量</th>
+                        <th>&nbsp;&nbsp;小计</th>
+                    </tr>
+                    {%for shop in request.session.shoplist.values %}
+                    <tr class="row">
+                        <td class="">{{shop.goods}}</td>
+                        <td><img src="/static/myadmin/goods/s_{{ shop.picname }}"</td>
+                        <td>{{shop.price}}</td>
+                        <td>&nbsp;&nbsp;{{shop.m}}</td>
+                        <td>{{shop.price}}</td>
+                    </tr>
+                    {%endfor%}
+                </table>
+
+            </form>
+            </div>
+        </div>
+    </div>
+{%endblock%}

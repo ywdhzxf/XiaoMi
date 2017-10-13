@@ -1,0 +1,64 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<script type="text/javascript" src="{% static 'myweb/public/js/3.js' %}"></script>
+{%endblock%}
+{%block block_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/3.css' %}">
+{%endblock%}
+{%block block_index%}
+	<!-- 首页导航 -->
+	<div class="container" style='padding:0'>
+		<div class='row sydh'>
+			<div class='col-md-12 col-xs-12 col-sm-12  sydh_zt'>
+				<a href="./">首页</a>
+				&gt;
+				<a href="#">所有分类</a>
+				<a href="{{ request.path }}" title='全部' >全部</a>
+				{% for tt in types %}
+					<a href="{{ request.path }}?ttid={{ tt.id}}" title='{{ tt.name }}'>{{ tt.name }}</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<!-- 首页 导航end-->
+		<!-- 商品列表 -->
+		<div class="container shangpin">
+			<!-- 手机 -->
+			<div class="row">
+				<div class=" col-md-12 shouji">
+					<ul>
+						<li class="pull-left yinc"><img src="{% static 'myweb/image_xq/xl.png' %}" alt=""></li>
+						<li class="pull-left bq"><a href="#">全部商品</a></li>
+					</ul>				
+				</div>
+			</div>
+			
+			<div class="row">
+				<ul>
+					<div class='col-md-12'>
+						
+						{% for stu in stulist %}
+						{% if stu.state != 3 %}
+					
+							<li class='goods col-md-3 col-sm-4 col-xs-6' style="margin:0">
+								<!-- <a href="./detail/{{ stu.id }}"> -->
+								<a href="{% url 'detail'  stu.id  %}">
+									<img src="/static/myadmin/goods/s_{{ stu.picname }}" width='40'/>
+								</a><br>
+								<a href="./detail/{{ stu.id }}">{{ stu.goods }}</a>
+								<a href="./detail/{{ stu.id }}">{{ stu.price }}</a>
+							</li>
+						{% endif %}
+						{% endfor %}
+					</div>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<br>
+{%endblock%}

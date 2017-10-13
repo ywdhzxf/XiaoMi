@@ -1,0 +1,158 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<script type="text/javascript" src="{% static 'myweb/public/js/4.js' %}"></script>
+{%endblock%}
+{%block block_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/4.css' %}">
+{%endblock%}
+
+
+{%block block_index%}
+	<!-- 介绍条 -->
+	<div class='container-fluid' style='padding:0' id='jst'>
+		<hr>
+		<div class='row'>
+			<div class='col-md-1'></div>
+			<div class='col-md-2 js_zt1'>
+				<p>{{ oblist.goods }}</p>
+			</div>
+			<div class='col-md-4'></div>
+			<div class='col-md-3 js_zt2 visible-lg'>
+				<ul>
+					<li><a href="#">概述&nbsp;|&nbsp;</a></li>
+					<li><a href="#">图集&nbsp;|&nbsp;</a></li>
+					<li><a href="#">参数&nbsp;|&nbsp;</a></li>
+					<li><a href="#">F码通道&nbsp;|&nbsp;</a></li>
+					<li><a href="#">用户评价</a></li>
+				</ul>
+			</div>
+			<div class='col-md-1'></div>
+		</div>
+		<hr>
+	</div>
+
+
+	<!-- 商品详情栏 -->
+	<form id="edit-profile" class="form-horizontal" action="{% url 'gwcinsert' oblist.id %}" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+		<div class="container-fluid" style='padding:0'>
+			<div class='row'>
+				<div class='col-md-1'></div>
+				<!-- 展示图片 -->
+				<div class='col-md-5'>
+					<div id="myCarousel" class="carousel slide">
+					    <!-- 轮播（Carousel）指标 -->
+					    <ol class="carousel-indicators">
+					        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					        <li data-target="#myCarousel" data-slide-to="1"></li>
+					   
+					    </ol>   
+					    <!-- 轮播（Carousel）项目 -->
+					    <div class="carousel-inner">
+					        <div class="item active">
+					           <!--  <img src="{%static 'myweb/image/e1.jpg' %}" alt="First slide" style='height: 410px'> -->
+					           <img src="/static/myadmin/goods/{{ oblist.picname }}" width='500' />
+					        </div>
+					        <div class="item">
+					            <img src="{%static 'myweb/image/e2.jpg' %}" alt="Second slide" style='height: 410px;width:1200px;'>
+					        </div>
+					    </div>
+					    <!-- 轮播（Carousel）导航 -->
+					    <a class="carousel-control left" href="#myCarousel" 
+					        data-slide="prev">&lsaquo;
+					    </a>
+					    <a class="carousel-control right" href="#myCarousel" 
+					        data-slide="next">&rsaquo;
+					    </a>
+					</div>
+				
+				</div>
+				<!-- 购买详情 -->
+				<div class='col-md-5'>
+					<div class='col-md-12'>
+						<h4 class='sp_zt1'>{{ oblist.goods }}</h4>
+					</div>
+					<div class='col-md-12'>
+						<p class='sp_zt2'>【 64GB版本 赠方盒子蓝牙音箱+米粉卡(最高含100元话费)+花呗6期】<span class='sp_zt3'>6.44''大屏 / 5300mAh 充电</span></p>
+						<p class='sp_zt3'>宝级的大电量 / 大像素相机 / 轻薄全金属 / ​4GB 大内存 / 骁龙八核处理器</p>
+					</div>
+					<div class='col-md-12'>
+						<p>{{ oblist.price }}</p>
+					</div>
+					<hr>
+					<div class='col-md-12 col-sm-12 col-xs-12'>
+						<p class='sp_zt4'>选择版本</p>
+					</div>
+					<div class='col-md-12 col-sm-12 col-xs-12' style='padding-right:0'>
+						<button class='col-md-5 col-sm-6 col-xs-10  bt1'><span><p class='bt1_1'>全网通版 4GB+128GB</p><p class='bt1_2'>1999元</p></span></button>
+						
+						<button class='col-md-5 col-sm-6 col-xs-10  bt2'><span><p class='bt2_1'>全网通版 4GB+64GB</p><p class='bt2_2'>1699元</p></span></button>
+					</div>
+					<div class='col-md-12 col-sm-12 col-xs-12'>
+						<p  class='sp_zt4'>选择颜色</p>
+					</div>
+
+					<div class='col-md-12 col-sm-12 col-xs-12'>
+						<button class='col-md-6 col-sm-6 col-xs-10 bt3'><span><img src="{%static 'myweb/image/f1.png' %}" alt="">金色</span></button>
+						<div class='col-md-6'></div>
+					</div>
+					<!-- <div class='col-md-12 col-sm-12 col-xs-12'>
+						<span><p class='sp_zt4'>选择小米提供的意外险</p><a href="#" class='sp_zt5'>了解意外险&gt;</a></span>
+					</div>
+					<div class='col-md-12 col-sm-12 col-xs-12 meiti1'>
+						<img src="{%static 'myweb/image/f2.png' %}"
+					</div> -->
+					<div class='col-md-12 col-sm-12 col-xs-12'>
+						<div class='row jz'>
+
+							<span class='col-md-12'><p class='sp_zt6'>{{ oblist.goods }} 全网通 4GB+64GB 金色</p><p class='sp_zt7'>1699元</p></span>
+							<span class='sp_zt6'>&nbsp;&nbsp;&nbsp;&nbsp;购买数量: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- <button class='jian'>-</button> --><input type="test" name="m" style='width:60px' value='1'><!-- <button class='jia'>+</button> --></span>
+							<span class='col-md-12 col-sm-12 col-xs-12 sp_zt8'>{{ oblist.price }}</span>
+						</div>
+					</div>
+					<div class='col-md-12 col-sm-12 col-xs-12'>
+						<button class='col-md-6 col-sm-6 col-xs-10 sp_zt9' type='submit'>加入购物车</button>
+						<div class='col-md-6'></div>
+					</div>
+
+					<div class='col-md-12 col-sm-12 col-xs-12' style='margin-top:20px'>
+						<span class='sp_zt10'><img src="{%static 'myweb/image/f3.png' %}" alt="">&nbsp;支持7天无理由退货</span>
+					</div>
+					<hr>
+					<div class='col-md-12 col-sm-12 col-xs-12 dz'>
+						<span class='dz'><img src="{%static 'myweb/image/f4.png' %}" alt="">&nbsp;北京 昌平区 回龙观 沙河村 <a href="#" class='sp_zt2'>修改</a></span>
+					</div>
+				
+				</div>
+				<div class='col-md-1'></div>
+			</div>	
+		</div>
+		</div>
+	</form>
+	<br>
+	<br>
+
+	<!-- 包装清单 -->
+	<div class="container" style='padding:0'>
+		<div class='row'>
+			<div class='col-md-12 col-sm-12 sol-xs-12 meiti2'>
+				<img src="{%static 'myweb/image/f5.jpg' %}" alt="">
+			</div>
+		</div>
+	</div>
+
+	<!-- 售后政策 -->
+	<div class="container" style='padding:0'>
+		<div class='row'>
+			<div class='col-md-12 col-sm-12 sol-xs-12 meiti3'>
+				<img src="{%static 'myweb/image/f6.jpg' %}" alt="">
+			</div>
+		</div>
+	</div>
+{%endblock%}
+
+
+
+

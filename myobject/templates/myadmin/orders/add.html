@@ -1,0 +1,78 @@
+{% extends "myadmin/base.html" %}
+
+ 
+{%block block_name%}
+<!-- 主体开始 -->
+
+	<h1>
+		订单详情表
+	</h1>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_ordersinsert' %}" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+
+			<div class="control-group">
+				<label class="control-label" for="input01">会员ID</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='uid'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">联系人</label>
+				<div class="controls">
+					<input type="passwo" class="input-xlarge" id="input01" name='linkman'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='address' />
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="input01">邮编</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='code' />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">电话</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='phone' />
+				</div>
+			</div>
+			
+		
+			<div class="control-group">
+				<label class="control-label" for="input01">总金额</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='total' />
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">状态</label>
+				<div class="controls">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="0" />新订单
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="1" />已发货
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="2" />已收货
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="3" />无效订单
+				</div>
+			</div>
+			
+
+									
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
+			</div>
+		</fieldset>
+	</form>
+
+<!-- 主体结束 -->
+{%endblock%}
+{%block block_js%}
+
+{%endblock%}

@@ -1,0 +1,110 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'myweb/public/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'myweb/public/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'myweb/public/js/bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'myweb/public/js/6.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/6.css' %}">
+</head>
+<body>
+    <script src="{% static 'myweb/public/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- 背景图片 -->
+    <div class="container-fluid">
+        <div class="row hidden-xs">
+            <img src="{% static 'myweb/image/bg.png' %}" class="img-responsive bg" alt="">
+        </div>
+    </div>
+    <!-- 登录注册页面 -->
+    <div class="container-fluid">
+
+        <div class='row'>
+            
+            <div class='col-md-3 col-xs-12 dl'>
+            
+               
+                <form id="edit-profile" class="form-horizontal" action="{% url 'zcinsert' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                    <div class='col-md-12'>
+                        <div class='col-md-12'>
+                            <!-- 登录扫码 -->
+                            <div class="dlsm">
+                                <a href="{% url 'login' %}" class="dlsm_sm">账号登录</a>
+                                <span>|</span>
+                                <a href="{% url 'zc' %}" class="dlsm_dl">注册账号</a>
+                            </div>
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            用户<input name="username" class="zh" type="text"  placeholder="邮箱/手机号码/小米账号">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            昵称<input name="name" class="zh" type="text"  placeholder="你的昵称">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            密码<input name="passwd" class="mm" type="text"  placeholder="输入你的密码">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            性别<input name="sex" class="zh" type="text"  placeholder="输入你的性别">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            地址<input name="address" class="zh" type="text"  placeholder="地址">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            电话<input name="phone" class="zh" type="text"  placeholder="您的电话号码">
+                        </div>
+
+                        <div class='col-md-12'>
+                            邮箱<input name="email" class="zh" type="text" placeholder="邮箱">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 按钮 -->
+                            <button class="dlbt" type='sumbit'>立即注册</button>
+                        </div>
+                    </div>
+
+                        
+                </form>
+            </div>
+            
+
+        </div>
+        
+    </div>
+    <!-- 尾部 -->
+    <div class="container-fluid hidden-xs">
+        <div class='row'>
+            <div class='col-md-12 wb_zt1'>
+                <a>简体&nbsp;|&nbsp;繁体&nbsp;|&nbsp;English&nbsp;|&nbsp;常见问题</a>
+            </div>
+            <div class='col-md-12 wb_zt2'>
+                <p>小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+   
+</body>
+</html>

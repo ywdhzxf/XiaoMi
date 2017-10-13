@@ -1,0 +1,158 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<script type="text/javascript" src="{% static 'myweb/public/js/5.js' %}"></script>
+{%endblock%}
+{%block block_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/5.css' %}">
+{%endblock%}
+{%block block_index%}
+    <!-- 主体 -->
+    <div class="container" style="background: rgb(245, 245, 245);height:300px;">
+        <div class="row">
+            <center>
+            <img src="/static/1.jpg" >
+            </center>
+            <div class="col-md-12 hidden-xs" style="height:1rem"></div>
+
+            <div class="col-md-12  col-xs-12 hidden-xs" style="background: #fff;font-size:1.4rem">
+                <div class="col-md-6 ">
+                    <!-- <div class="col-md-1 col-xs-1"><input class="checkAllGoods"type="checkbox"></div> -->
+                    <div class="col-md-2 col-xs-2"><div style="height:0.5rem"></div><h5>选择</h5></div>
+                    <div class="col-md-2 col-xs-2"><div style="height:0.5rem"></div><h5>商品ID</h5></div>
+                    <div class="col-md-4 col-xs-2"><div style="height:0.5rem"></div><h5>商品图片</h5></div>
+                    <div class="col-md-4 col-xs-2"><div style="height:0.5rem"></div><h5>商品名称</h5></div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="col-md-1 hidden-xs"></div>
+                    <div class="col-md-3 col-xs-2"><div style="height:0.5rem"></div><h5>单价</h5></div>
+                    <div class="col-md-3 col-xs-2"><div style="height:0.5rem"></div><h5>数量</h5></div>
+                    <div class="col-md-3 col-xs-2"><div style="height:0.5rem"></div><h5>小计</h5></div>                   
+                    <div class="col-md-2 col-xs-1"><div style="height:0.5rem"></div><h5>操作</h5></div>
+                </div>          
+            </div>
+            <div class="col-md-12  hidden-xs" style="height:2px;background:rgb(245, 245, 245)"></div>
+            
+            {% csrf_token %}
+                <!-- 商品 -->
+                {% for shop in request.session.shoplist.values %}
+                <div class="col-md-12  this-good " style="background: #fff;font-size:1.7rem">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="col-md-2 col-xs-1">
+                            <div style="height:1rem" class="hidden-xs"></div>
+                            <div class="niu1" >
+                                <input class="checkOneGoods" name='xuan' type="checkbox" onclick='jisuan()' gid='{{ shop.id }}'>
+                            </div>
+                        </div>
+                        <div class="col-md-2 hidden-xs" style='line-height: 65px'>{{ shop.id }}</div>
+                        <div class="col-md-4 col-xs-4">
+                            <img src="/static/myadmin/goods/s_{{ shop.picname }}" />
+                        </div>
+                        <div class="col-md-4 col-xs-6 niu">
+                            <a>{{ shop.goods }}</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 money col-xs-12">
+                        <div class="col-md-1 hidden-xs"></div>
+                        <div class="col-md-2 col-xs-3">
+                            <div style="height:2rem" class="hidden-xs danjia"></div>
+                            <h5>{{ shop.price }}</h5>
+                        </div>
+                        <div class="col-md-4 col-xs-5">
+                            <div style="height:2rem" class="hidden-xs"></div>
+                            <button  class="col-md-2 btn-1 col-xs-2" onclick="window.location='{% url 'gwcchange' %}?sid={{shop.id}}&m={{shop.m|add:-1}}'" >-</button>
+                            <input  class="col-md-6 col-xs-2 " type="text" name='m' value="{{ shop.m }}">
+                            <button  class="col-md-2 btn-2 col-xs-2"  onclick="window.location='{% url 'gwcchange' %}?sid={{shop.id}}&m={{shop.m|add:1}}'">+</button>
+                        </div>
+
+                        <div class="col-md-3 col-xs-2 money-total">
+                            <div style="height:2rem" class="hidden-xs"></div>
+                            <!-- <h5 id="xiaoji" class="xj">{{ shop.sums }}</h5> -->
+                            <h5 name='xiaoji' class="xj">{% widthratio shop.price 1 shop.m %}</h5>
+                        </div>                   
+                        <div class="col-md-2 col-xs-1 del-div">
+                            <div style="height:2rem " class="hidden-xs"></div>
+                            <a id='del' href='{% url "gwcdel" shop.id %}'>X</a>
+
+                        </div>
+                    </div>      
+                </div>
+                <div class="col-md-12  hidden-xs" style="height:2px;background:rgb(245, 245, 245)"></div>
+                {% endfor %}
+             
+                  
+                <div class="col-md-12 hidden-xs" style="height:1rem;background:rgb(245, 245, 245)"></div> 
+                <div style="height:0.5rem" class="visible-xs"></div>        
+                <div class="col-md-12" style="background: #fff;font-size:1.4rem">
+                    <div class="col-md-3 col-xs-1">
+                        <div style="height:1rem" class="hidden-xs"></div>
+                        <div class="niu1" style='padding-left:13px'>
+                            
+                            <button onclick='func(1)'>全选</button>
+                            <button onclick='func(2)'>全不选</button>
+                            <button onclick='func(3)'>反选</button>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                        <div style="height:1.5rem"  class="hidden-xs"></div>
+                        <span class="span-1">共 <span class="span-2 spzsl"> 0 </span> 件商品,已选择<span class="span-3 xzspl"> 0 </span>件</span>
+                        <button><a href="{% url 'gwcclear' %}"> 清空全部 </a></button>
+                    </div>
+
+                   
+
+                    <div class="col-md-3 col-xs-5">
+                        <span class="span-6 hj">合计(不含运费):<span class="span-4 zj">0.00</span><span class="span-5">元</span></span>
+                    </div>
+                    
+                    <div class="col-md-2 btn-3-div col-xs-12">
+                        <button class="btn-3" type='button' onclick="window.location='{% url 'ordersform' %}?gids='+jisuan().join(',')">去结算</button> 
+                    </div> 
+                    
+                    
+                </div> 
+
+        </div>
+    </div>
+    <div class="container hidden-xs" style="background: rgb(245, 245, 245);">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-3 "><div style="height:3.8rem"></div><div class="h2-div1"></div></div>
+                <div class="col-md-5 "><h2 class="mm">  购买购物车中商品的人还买了</h2></div>
+                <div class="col-md-3 "><div style="height:3.8rem"></div><div class="h2-div2"></div></div>               
+            </div>
+        </div>
+    </div>
+    <!-- 推荐商品 -->
+    <div class="container" style="background: rgb(245, 245, 245);">
+        <div class="row col-md-12 hidden-xs">
+            <ul>
+                {% for x in good %}
+                <li class='goods col-md-2 col-xs-6 col-sm-6 '>
+                    <a href="{% url 'detail' x.id %}"><img src="/static/myadmin/goods/s_{{ x.picname }}" alt=""></a><br>
+                    <a href="">{{ x.goods }}</a>
+                    <div></div>
+                    <a href="">{{ x.price }}</a>
+                    <div></div>
+                    <div class="col-md-3"></div>
+                    <form id="edit-profile" class="form-horizontal" action="{% url 'gwcinsert' x.id %}" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="col-md-6">加入购物车</button>
+                    <input type="hidden" name="m" value='1'>
+                    </form>
+                </li>
+               {% endfor %}
+                <li class='col-md-1'></li>                   
+            </ul>
+        </div> 
+    </div>
+    <script type="text/javascript">
+     window.onload = function(){
+        jisuan();
+     }
+        
+    </script>
+    
+{%endblock%}

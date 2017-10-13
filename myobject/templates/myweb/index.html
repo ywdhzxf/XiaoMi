@@ -1,0 +1,210 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<script type="text/javascript" src="{% static 'myweb/public/js/1.js' %}"></script>
+{%endblock%}
+{%block block_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/1.css' %}">
+{%endblock%}
+
+
+{%block block_index%}
+		<!-- 推荐栏 -->
+		<div class='row'>
+			<div class='col-md-12 col-sm-12 col-xs-12  ' style='padding:0'>
+				<!-- 竖向导航栏 -->
+				<div class='col-md-2 col-sm-3 col-xs-11 tj_dh'>
+					
+					<ul class='tj_dh1'>
+						{% for type in typelist %}
+							<li><a href="{% url 'lists' type.id %}">{{ type.name }}</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						{% endfor %}
+						
+						<li><a href="{% url 'lists' %}">电视 盒子</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}">路由器 智能硬件</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}">移动电源 电池 插线板</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}" class='kd'>耳机 音箱</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}">保护套 贴膜</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}">线材 支架 存储卡</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}">箱包 服饰 鞋 眼镜</a><img src="{%static 'myweb/image/you.png' %}"></li>
+						<li><a href="{% url 'lists' %}">米兔 生活周边</a><img src="{%static 'myweb/image/you.png' %}"></li>
+
+					</ul>		
+				</div>
+				<!-- 轮播图 -->
+				<div class='col-md-10 col-sm-9 col-xs-12 tj_lb' data-interval="1000">
+
+					<div id="myCarousel" class="carousel slide">
+					    <!-- 轮播（Carousel）指标 -->
+					    <ol class="carousel-indicators">
+					        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					        <li data-target="#myCarousel" data-slide-to="1"></li>
+					        <li data-target="#myCarousel" data-slide-to="2"></li>
+					        <li data-target="#myCarousel" data-slide-to="3"></li>
+					        <li data-target="#myCarousel" data-slide-to="4"></li>
+					        <li data-target="#myCarousel" data-slide-to="5"></li>
+					    </ol>   
+					    <!-- 轮播（Carousel）项目 -->
+					    <div class="carousel-inner">
+					        <div class="item active">
+					            <a href="lists"><img src="{%static 'myweb/image/lb1.jpg' %}" alt="First slide" style='height: 410px'></a>
+					        </div>
+					        <div class="item">
+					            <a href="lists"><img src="{%static 'myweb/image/lb2.jpg' %}" alt="Second slide" style='height: 410px;width:1200px;'></a>
+					        </div>
+					        <div class="item">
+					            <a href="lists"><img src="{%static 'myweb/image/lb3.jpg' %}" alt="Third slide" style='height: 410px;width:1200px;'></a>
+					        </div>
+					        <div class="item" >
+					            <a href="lists"><img src="{%static 'myweb/image/lb4.jpg' %}" alt="Four slide" style='height: 410px;width:1200px;'></a>
+					        </div>
+					        <div class="item " >
+					            <a href="lists"><img src="{%static 'myweb/image/lb5.jpg' %}" alt="Five slide" style='height: 410px;width:1200px;'></a>
+					        </div>
+					        <div class="item ">
+					            <a href="lists"><img src="{%static 'myweb/image/lb6.jpg' %}" alt="Six slide" style='height: 410px;width:1200px;'></a>
+					        </div>
+					    </div>
+					    <!-- 轮播（Carousel）导航 -->
+					    <a class="carousel-control left" href="#myCarousel" 
+					        data-slide="prev">&lsaquo;
+					    </a>
+					    <a class="carousel-control right" href="#myCarousel" 
+					        data-slide="next">&rsaquo;
+					    </a>
+					</div>
+				</div>
+			</div>
+			<!-- 特效二 -->
+			<!-- <div class='tx2'>
+				<div>
+					<p style='margin-top:40px'><img src="{%static 'myweb/image_xq/t1.jpg' %}" alt=""></p>
+					<p><a href="#" class='tx2_1'>小米专用耳机</a></p>
+				</div>
+				<div>
+					<p><img src="{%static 'myweb/image_xq/t2.jpg' %}" alt=""></p>
+					<p><a href="#" class='tx2_1'>小米专用手环</a></p>
+				</div>
+				<div>
+					<p><img src="{%static 'myweb/image_xq/t3.jpg' %}" alt=""></p>
+					<p><a href="#" class='tx2_1'>小米专用数据线</a></p>
+				</div>
+			</div>		 -->	
+		</div>
+		<br>
+		
+			
+		
+		<br> 
+			<!-- 明星单品 -->
+			<!-- 标题 -->
+		<div class='row' style="background: #F5F5F5">
+			<div class='col-md-12 col-sm-12 col-xs-12 '>
+				<h3 style='float:left'>小米明星单品</h3>
+				<div style='float:right'>
+					<button class='mx_1'><span class="glyphicon glyphicon-chevron-right"></span></button>
+					<button class='mx_2'><span class="glyphicon glyphicon-chevron-left"></span></button>
+				</div>
+			</div>
+		</div>
+			<!-- 展示 -->
+		<div class='row' style="background: #F5F5F5">
+			<div style='padding:0'>
+				<ul class='mxdp_1'>
+					{% for y in list %}
+					{% if y.state != 3 %}
+						
+					<li>
+						<div class="col-md-3 jdsp">
+		   		    		<div class="thumbnail">
+				   		      	<a href="{% url 'detail' y.id %}">
+				   		      		<img src= '/static/myadmin/goods/s_{{y.picname}}' alt="...">
+				   		      	</a>
+				   		      	<div class="caption">
+					   		        <p class='jd_zt1'><a class='jd_zt1'>{{ y.goods }}</a></p>
+					   		        <p class='jd_zt2'>{{ y.descr }}</p>
+				   		      		<p class='jd_zt3'>{{ y.price }}<del class='jd_zt4'>2599元</del></p>
+				   		      	</div>
+		   		    		</div>
+		   		 		</div>
+					</li>
+					{% endif %}
+					{% endfor %}
+					
+				</ul>
+				<ul id='mxdp_2' class='hidden mxdp_2'>
+					{% for a in list1 %}
+					{% if a.state != 3 %}
+					
+					<li>
+						<div class="col-md-3 jdsp">
+		   		    		<div class="thumbnail">
+				   		      	<a href="{% url 'detail' a.id %}">
+				   		      		<img src= '/static/myadmin/goods/s_{{a.picname}}' alt="...">
+				   		      	</a>
+				   		      	<div class="caption">
+					   		        <p class='jd_zt1'><a class='jd_zt1'>{{ a.goods }}</a></p>
+					   		        <p class='jd_zt2'>{{ a.descr }}</p>
+				   		      		<p class='jd_zt3'>{{ a.price }}<del class='jd_zt4'>2599元</del></p>
+				   		      	</div>
+		   		    		</div>
+		   		 		</div>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	<br><br>
+	<!-- 下内容 -->
+	<div class="container xnr" style='padding:0'>
+	<br><br>
+		<div class="row">
+			<!-- 家电标题栏 -->
+			<div class='col-md-10 col-xs-10 col-xs-offset-1 col-md-offset-1 jd' style='padding:0'>
+				<h3 class='jd_1'>精选商品</h3>
+				<div class='jd_2'>
+					<ul>
+						{% for type in typelist %}
+							<li><a href="{% url 'lists' type.id %}">{{ type.name }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
+			<!-- 家电展示 -->
+			<div class='col-md-12  jd' style='padding:0'>
+		
+				
+				<div class='col-md-12' style='padding-right:10px;padding-left:10px'>
+					<ul>
+						{% for x in good %}
+						{% if x.state != 3 %}
+						
+						<li>
+							<div class="col-md-3 jdsp">
+			   		    		<div class="thumbnail">
+			   		    			<a href="{% url 'detail' x.id %}">
+					   		      		<img src= '/static/myadmin/goods/s_{{x.picname}}' alt="...">
+			   		    			</a>
+					   		      	<div class="caption">
+						   		        <p class='jd_zt1'><a class='jd_zt1'>{{ x.goods }}</a></p>
+						   		        <p class='jd_zt2'>{{ x.descr }}</p>
+					   		      		<p class='jd_zt3'>{{ x.price }}<del class='jd_zt4'>2599元</del></p>
+					   		      	</div>
+			   		    		</div>
+			   		 		</div>
+						</li>
+						{% endif %}
+						{% endfor %}
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<br>
+{%endblock%}

@@ -1,0 +1,48 @@
+{% extends "myadmin/base.html" %}
+
+ 
+{%block block_name%}
+<!-- 主体开始 -->
+
+	<h1>
+		Edit Your Profile
+	</h1>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_typesupdate' type1.id %}" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+		<fieldset>
+			<legend>修改商品分类信息</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">分类名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='name' value="{{ type1.name }}" />
+				</div>
+			</div>
+<!-- 			<label class="control-label" for="input01">pid</label>
+			<select class="form-control" name="pid">
+				{% for x in type2 %}
+			    <option >{{ x.pid }}:{{ x.name }}</option>  
+				{% endfor %}
+			</select> -->
+			<!-- <div class="control-group">
+				<label class="control-label" for="input01">父类ID</label>
+				<div class="controls">
+					<input type="passwo" class="input-xlarge" id="input01" name='pid' value="{{ type.pid }}"/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">分类路径</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='path' value="{{ type.path }}"/>
+				</div>
+			</div> -->
+			
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
+			</div>
+		</fieldset>
+	</form>
+
+<!-- 主体结束 -->
+{%endblock%}
+{%block block_js%}
+{%endblock%}

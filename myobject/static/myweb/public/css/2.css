@@ -1,0 +1,315 @@
+/*登录页面!!!*/
+/*登录页面!!!*/
+/*登录页面!!!*/
+
+
+
+ul,li{
+	list-style: none;
+}
+li{
+	float:left;
+}
+span{
+	color:#e0e0e0;
+	margin-bottom:10px; 
+}
+a{text-decoration: none;}
+
+
+
+/*背景*/
+
+.bg{
+	position:relative;
+	
+	width: 100%;
+	z-index:1;
+	
+}
+/*登录界面*/
+.dl{
+	position: absolute;
+	left:90.0rem;
+	top:12rem;
+	background: #fff;
+	
+	z-index:5;
+}
+
+
+/*登录扫码*/
+.dlsm{
+	
+	margin:25px 0;
+	text-align: center;
+	font-size: 25px;
+	text-decoration: none;
+
+}
+	/*登录*/
+.dlsm_dl{
+	text-align: center;
+	background:#fff;
+	color:#F56600; 
+	border:0;
+	margin: 0;
+	padding: 0; 
+	
+	margin-right:20px;
+}
+.dlsm_dl:hover{
+	color:red;
+	text-decoration: none;
+}
+	/*扫码*/
+.dlsm_sm{
+	text-align: center;
+	background:#fff;
+	color:#666; 
+	border:0;
+	margin: 0;
+	padding: 0; 
+	
+	margin-left: 2.0rem;
+}
+
+.sm:hover{
+	color:red;
+	text-decoration: none;
+}
+.btn12 div{
+	text-align: center;
+	float:left;
+	
+}
+
+/*输入框2个+登录按钮*/
+/*账号*/
+.zh{
+	margin:15px;
+	width: 200px;height: 48px;
+	text-align: left;
+	margin-bottom: -0.5rem;
+	color: #969696;
+}
+/*密码*/
+.mm{
+	margin:15px;
+	width: 200px;height: 48px;
+	text-align: left;
+	margin-bottom: -0.5rem;
+	color: #969696;
+}
+
+/*登录按钮*/
+.dlbt{
+	margin:15px;
+	width: 280px;height: 48px;
+	text-align: center;
+	
+	background: #F56600;
+	color:white;
+	border-radius: 1px;
+	border:0;
+	padding: 0;
+	
+}
+/*注册和忘记密码*/
+.zcwj{
+	height: 3rem;
+	width:100%;
+	margin:10px 0;
+	text-align: center;
+	font-size: 14px;
+	text-decoration: none;
+}
+.zcwj_zc{
+	text-align: center;
+	background:#fff;
+	color:#666; 
+	border:0;
+	margin: 0;
+	padding: 0; 
+	
+	margin-right: 2.0rem;
+}
+.zcwj_wj{
+	text-align: center;
+	background:#fff;
+	color:#666; 
+	border:0;
+	margin: 0;
+	padding: 0; 
+	
+	margin-left: 2.0rem;
+}
+.zcwj_zc:hover,.zcwj_wj:hover{
+	text-decoration: none;
+	color:red;
+}
+/*其他登录*/
+.qt{margin:50px}
+.qt_1{ width:45px;border:#bbb 0.5px solid; float:left;margin-top: 2px;}
+.qt_3{ width:45px; border:#bbb 0.5px solid; float:left;margin-top: 2px;}
+.qt_2{ float:left; height:5px; line-height:6px; margin:0px 13px 0px 13px;font-size: 14px;color:#bbb;}
+
+
+
+/*其他方式登录链接*/
+.qtdl{
+	
+	margin:0;
+	padding: 0;
+	margin-bottom:120px;
+	
+}
+.qt_link{
+	
+}
+.qt_link li{
+	float:left;
+}
+
+.qt_qq{
+	margin-top: 0.8rem;
+	margin-right: 2rem;
+}
+.qt_wb{
+	margin-top: 0.9rem;
+	margin-right: 2rem;
+}
+.qt_zfb{
+	margin-top: 0.7rem;
+	margin-right: 2rem;
+}
+.qt_wx{
+	margin-top: 0.8rem;
+	margin-right: 2rem;
+}
+
+
+/*尾部字体*/
+.wb_zt1{
+	font-size:12px;color:#757575;
+	text-align: center;margin-top:50px;
+}
+.wb_zt2{
+	font-size:12px;color:#757575;
+	text-align: center;
+}
+
+
+
+/*媒体查询*/
+@media (max-width:768px){
+.col-md-3.col-xs-12.dl{
+		width: 300px;height: 400px;
+	}
+.bg{height: 700px;}
+.dl{
+	position: absolute;
+	left:430px;
+	top:200px;
+	background: #fff;
+	
+	z-index:5;
+	}
+	/*账号*/
+.zh{
+	margin:5px;
+	width: 200px;height: 50px;
+	text-align: left;
+	margin-bottom:10px;
+	color: #969696;
+}
+/*密码*/
+.mm{
+	margin:5px;
+	width: 200px;height:50px;
+	text-align: left;
+	color: #969696;
+}
+	/*登录*/
+.dlsm_dl{
+	text-align: center;
+	background:#fff;
+	color:#F56600; 
+	border:0;
+	margin: 0;
+	padding: 0; 
+	font-size:16px;
+	margin-right:10px;
+}
+	/*扫码*/
+.dlsm_sm{
+	text-align: center;
+	background:#fff;
+	color:#666; 
+	border:0;
+	margin: 0;
+	padding: 0; 
+	font-size:16px;
+	
+	margin-left:10px;
+}
+/*其他登录*/
+.qt{margin:5px}
+.qt_1{ width:45px;border:#bbb 0.5px solid; float:left;margin-top: 2px;}
+.qt_3{ width:45px; border:#bbb 0.5px solid; float:left;margin-top: 2px;}
+.qt_2{ float:left; height:5px; line-height:6px; margin:0px 13px 0px 13px;font-size: 14px;color:#bbb;}
+
+/*登录按钮*/
+.dlbt{
+	margin:4px;
+	width: 200px;height: 48px;
+	text-align: center;
+	background: #F56600;
+	color:white;
+	border-radius: 1px;
+	border:0;
+	padding: 0;
+}
+
+
+/*其他方式登录链接*/
+.qtdl{
+	margin:0;
+	padding: 0;
+	margin-bottom:5px;
+	
+}
+.qt_link{
+	
+}
+.qt_link li{
+	float:left;
+}
+
+.qt_qq{
+	margin-top: 0.8rem;
+	margin-right:2px;
+}
+.qt_wb{
+	margin-top: 0.9rem;
+	margin-right:2px;
+}
+.qt_zfb{
+	margin-top: 0.7rem;
+	margin-right:2px;
+}
+.qt_wx{
+	margin-top: 0.8rem;
+	margin-right:2px;
+}
+}
+
+/*媒体查询手机*/
+@media (max-width:414px){
+.dl{
+	position:none;
+	left:35px;
+	top:100px;
+	background: #fff;
+	}
+}

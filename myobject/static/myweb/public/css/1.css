@@ -1,0 +1,235 @@
+/*首页*/
+/*首页*/
+/*首页*/
+
+
+
+/*准备工作*/
+li{list-style:none;}
+a{text-decoration: none}
+
+body,div,span,ul,li,a{padding:0;margin:0;}
+.row{margin:0;}
+
+/*导航栏*/
+	/*清掉导航栏的下边框*/
+.navbar{margin-bottom:0;}
+	/*减小导航栏里的padding*/
+.navbar-nav>li>a{padding:0.5rem;}
+	/*左边导航*/
+.zdh{margin-left:7.5rem;margin-right:1.5rem;}
+	/*右边导航*/
+.ydh{margin-left:1.5rem;margin-right:7.5rem;}
+
+/*特效yi*/
+
+.tx1{
+	position:absolute;top:150%;
+	border-top: 1px solid #E0E0E0;
+	display:none;
+	background: #fff; z-index:2
+}
+.tx1_1{background: #fff; z-index:3;}
+
+/*特效二*/
+.tx2{
+	position:absolute;top:29%;
+	border-top: 1px solid #E0E0E0;
+	left:300px;width: 210px;height: 410px;
+	background:#fff; z-index:2;
+	text-align: center;display:none;
+}
+.tx2_1{
+	font-size:15px;color:#9D9D9D;
+	margin:10px 0;
+}
+
+
+
+
+
+
+/*购物车*/
+.cart{
+	width: 360px;text-align: center;
+	height: 300px;line-height: 300px;
+	background-color: #fff;
+	position: absolute;
+	border: 4px solid #666;
+	border-radius: 8px;
+	top:50px;left:70%;
+	display:none;
+	float:right;
+	z-index:1;
+	}
+.cart:after,.cart:before {
+	border: solid transparent;
+	content: ' ';
+	height: 0;
+	left: 80%;
+	position: absolute;
+	width: 0;
+	}
+.cart:after {
+	border-width: 13px;
+	border-bottom-color: #fff;
+	top: -21px;
+	}
+.cart:before {
+	border-width: 14px;
+	border-bottom-color: #666;
+	top: -30px;
+	}
+
+/*内容*/
+
+
+/*log分类区*/
+.lgfl{padding:0;margin:0;}
+/*log*/
+.log{float:left;margin-top:1.8rem;margin-left:-0.2rem}
+/*分类*/
+.fl{float:left ;margin-top:2.8rem;/*margin-left:30px*/ }
+	/*设置字体样式*/
+.nav>li>a{padding:0.6rem;font-size:15px;color:black;}
+
+.nav>li>a:hover{background:white}
+/*.f1 ul .nav,.nav-pills{width: 750px;}*/
+
+/*表单*/
+.bd{float:left;margin-top:2rem;}
+	/*表单框*/
+.bd_1{height:4.0rem;width:13.0rem;border:1px solid #b0b0b0;float:right;border-radius:0%;}
+.bd_2{height:4.0rem;width:4.0rem;border:1px solid #b0b0b0;border-left:none;float:right;border-radius:0%;}
+
+/*推荐导航*/
+.tj_dh{background:#0B0C0E;padding:0px;}
+.tj_dh1{ padding-top:2rem;padding-bottom:2rem;}
+.tj_dh1 li{height:3.7rem;line-height:3rem;}
+.tj_dh1 li a{color:white;padding-left:2rem;text-decoration:none;}
+.tj_dh1 li img{float:right;margin-right:1.0rem;margin-top:0.5rem}
+/*推荐轮播*/
+.tj_lb{padding-left:0px;padding-right:0px;}
+
+/*推荐栏2*/
+	/*展示*/
+.tj2_zs{width:21rem;height:15rem;background:#5F5750;padding:0px;overflow:hidden;}
+.tj2_zs1{width:33.33%;height:50%;border:1px solid #665E57;padding:0;}
+/*.tj2_zs1 a{padding:2px;}*/
+
+
+	/*图片*/
+.tj2_tp1{padding:0;}
+.tj2_tp1{padding-left:2.0rem;text-align: center}
+.tj2_tp1 a img{float:left;width:28rem;margin-left:2.0rem;padding:0;}
+
+
+/*明星单品*/
+.mx_1{float:right;margin-top:1.5rem;width:3.0rem;height:2rem;margin-right:1.5rem}
+.mx_2{float:right;margin-top:1.5rem;width:3.0rem;height:2rem;}
+	/*展示图片*/
+.mx_tp{padding:0;margin-left:0.7rem;float:left;height:28rem;width:20rem;}
+.mx_tps{padding:0;float:left;height:28rem;width:20rem;}
+
+/*下内容*/
+.xnr{background:#F5F5F5;}
+/*家电标题*/
+.jd_1{float:left;}
+.jd_2 li{
+	float:right;margin-top:20px;font-size:15px;
+	margin-left:30px
+}
+	/*家电商品字体/*/
+/*.caption a{font-size:14px;text-align:center;color:black;}*/
+.jd_zt1{font-size:13px;text-align:center;color:black;}
+.jd_zt2{font-size:12px;text-align:center;color:#B0B0B0;}
+.jd_zt3{font-size:12px;text-align:center;color:#FF6700;}
+.jd_zt4{font-size:12px;text-align:center;color:#B0B0B0;}
+/*商品间距*/
+.jdsp{padding:0px 10px;}
+/*小白摄像头*/
+.xbsxt1{background:white;padding:0;padding-top:50px;padding-bottom:10px;margin-bottom:10px}
+.xbsxt2{background:white;padding:0;padding-top:50px;padding-bottom:30px;margin-top:10px;}
+/*更多的图片//*/
+.gdtp{float:right;}
+
+/*底部*/
+.footerzt{background: white;}
+	/*底部一*/
+	/*图片间距*/
+.footer_tp1{margin-right:5px}
+.footer_li{float:left;padding:20px 30px;}
+
+	/*底部字体*/
+.footer_zt1{font-size:17px;color:black;text-decoration: none}
+
+
+	/*底部区域二 友情链接*/
+.footer2{padding:40px 0;}
+.bz{padding-left:0;}
+.bugt{width:180px;height:50px;}
+
+	/*字体*/
+.footer2_zt1{font-size:15px;color:black;}
+.footer2_zt2{font-size:12px;color:#757575;}
+.footer2_zt3{font-size:20px;color:#FF672F;}
+.footer2_zt4{font-size:12px;color:#FF672F;}
+
+
+/*结局*/
+/*字体*/
+.jz_zt1{font-size:13px;color:#757575;}
+.jz_zt2{font-size:13px;color:#B0B0B0;}
+
+/*小米*/
+.xm{text-align: center;font-size:18px;color:#BABABA;margin-top:20px;margin-bottom:20px;}
+
+
+
+/*媒体查询 ipad*/
+@media (max-width:769px){
+/*左边导航*/
+.zdh{margin-left:5px;margin-right:1px;}
+/*表单框*/
+.bd_2{
+	height:4.0rem;width:4.0rem;border:1px solid #b0b0b0;border-left:none;
+	float:right;border-radius:0%;margin-right:300px}
+
+/*帮助中心bug*/
+.bz{padding-left:15px;}
+/*bug图片*/
+.bugt{width:180px;height:50px;}
+/*推荐栏2图片*/
+.tj2_tp1 a img{float:left;width:220px;padding-right:30px;}
+.tj2_tp2 a img{float:left;width:220px;padding-right:30px;}
+.tj2_tp3 a img{float:left;width:220px;padding-right:30px;}
+/*底部log*/
+
+
+
+
+
+
+
+}
+
+/*媒体查询手机端*/
+@media (max-width:415px){
+/*log*/
+.log{float:left;margin-top:40px;margin-left:-0.2rem}
+/*表单框*/
+.bd_2{
+	height:4.0rem;width:4.0rem;border:1px solid #b0b0b0;border-left:none;
+	float:right;border-radius:0%;margin-right:100px}
+
+/*bug图片*/
+.bugt{width:80px;height:30px;}
+/*推荐栏2图片*/
+.tj2_tp1 a img{float:left;width:300px;padding-right:10px;}
+.tj2_tp2 a img{float:left;width:300px;padding-right:10px;}
+.tj2_tp3 a img{float:left;width:300px;padding-right:10px;}
+.mx_tps{float:left;height:28rem;width:20rem;margin:8px;}
+.gdtp{float:right;padding-left:0;margin-right:10px;}
+
+
+}

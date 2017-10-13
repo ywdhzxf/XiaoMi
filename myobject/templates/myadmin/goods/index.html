@@ -1,0 +1,161 @@
+{% extends "myadmin/base.html" %}
+
+
+{%block block_name%}
+ <!-- 主体开始 -->
+<div class="span9">
+		<h1>
+			Projects
+		</h1>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						类别ID
+					</th>
+					<th>
+						商品名称
+					</th>
+					<th>
+						生产厂家
+					</th>
+					<!-- <th>
+						简介
+					</th> -->
+					<th>
+						单价
+					</th>
+					<th>
+						图片名
+					</th>
+					<th>
+						状态
+					</th>
+					<th>
+						库存量
+					</th>
+					<th>
+						销量
+					</th>
+					<th>
+						点击量
+					</th>
+					<th>
+						添加时间
+					</th>
+					<th>
+						属性
+					</th>
+					<th>
+						删除
+					</th>
+				</tr>
+				
+			</thead>
+			<tbody>
+				{% for stu in stulist %}
+				<tr>
+					<td>
+						{{ stu.id }}
+					</td>
+					
+					<td>
+						{{ stu.typeid }}
+					</td>
+					
+					<td>
+						{{ stu.goods }} 
+					</td>
+					
+					<td>
+						{{ stu.company }}
+					</td>
+					<!-- <td>
+						{{ stu.descr }}
+					</td> -->
+					<td>
+						{{ stu.price }}
+					</td>
+					<td>
+						<img src="/static/myadmin/goods/s_{{ stu.picname }}" width='60'/>
+					</td>
+					<td>
+						{% if stu.state == 1 %}
+							新添加
+						{% elif stu.state == 2 %}
+							在售
+						{% else %}
+							下架
+						{% endif %}
+					</td>
+					<td>
+						{{ stu.store }}
+					</td>
+					<td>
+						{{ stu.num }}
+					</td>
+					<td>
+						{{ stu.clicknum }}
+					</td>
+					<td>
+						{{ stu.addtime }}
+					</td>
+					<td>
+						<a href="{% url 'myadmin_goodsedit' stu.id %}">编辑</a>
+					</td>
+					<td>
+						<a href="{% url 'myadmin_goodsdel' stu.id %}">删除</a>
+					</td>
+				</tr>
+				{% endfor %}
+				
+				
+				
+				
+			</tbody>
+		</table>
+		<a class="toggle-link" href="#new-project"><i class="icon-plus"></i> New Project</a>
+		<form id="new-project" class="form-horizontal hidden">
+			<fieldset>
+				<legend>New Project</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">Project Name</label>
+					<div class="controls">
+						<input type="text" class="input-xlarge" id="input01" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select01">Client</label>
+					<div class="controls">
+						<select id="select01"> <option>-- Select client --</option> <option>Bad Robot</option> <option>Evil Genius</option> <option>Monsters Inc</option> </select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="textarea">Project Summary</label>
+					<div class="controls">
+						<textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Create</button> <button class="btn">Cancel</button>
+				</div>
+
+
+			</fieldset>
+		</form>
+	</div>
+	{%for pindex in plist%}
+	{%if pIndex == pindex%}
+	<button>{{pindex}}</button>
+	{%else%}
+	<a href="{% url 'myadmin_goodsindex' pindex %}">{{pindex}}</a>
+	
+	{%endif%}
+	{%endfor%}
+
+
+    <!-- 主体结束 -->
+{%endblock%}

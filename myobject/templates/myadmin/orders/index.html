@@ -1,0 +1,137 @@
+{% extends "myadmin/base.html" %}
+
+
+{%block block_name%}
+ <!-- 主体开始 -->
+<div class="span9">
+		<h1>
+			Projects
+		</h1>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						ID
+					</th>
+					<th>
+						会员ID
+					</th>
+					<th>
+						联系人
+					</th>
+					<th>
+						地址
+					</th>
+					<th>
+						邮编
+					</th>
+					<th>
+						电话
+					</th>
+					<th>
+						购买时间
+					</th>
+					<th>
+						总金额
+					</th>
+					<th>
+						状态
+					</th>
+					 <th>
+						属性
+					</th>
+					
+				</tr>
+				
+			</thead>
+			<tbody>
+				{% for stu in stulist %}
+				<tr>
+					<td>
+						{{ stu.id }}
+					</td>
+					<td>
+						{{ stu.uid }}
+					</td>
+					<td>
+						{{ stu.linkman }}
+					</td>
+					
+					<td>
+						{{ stu.address }}
+					</td>
+					<td>
+						{{ stu.code }}
+					</td>
+					<td>
+						{{ stu.phone }}
+					</td>
+					<td>
+						{{ stu.addtime }}
+					</td>
+					<td>
+						{{ stu.total }}
+					</td>
+					<td>
+						{% if stu.status == 0 %}
+							新订单
+						{% elif stu.status == 1 %}
+							已发货
+						{% elif stu.status == 2 %}
+							已收货
+						{% else %}
+							无效订单
+						{% endif %}						
+						
+					</td>
+
+					<td>
+						<a href="{% url 'myadmin_detailindex' stu.id %}">查看详情</a>
+					</td>
+
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a class="toggle-link" href="#new-project"><i class="icon-plus"></i> New Project</a>
+		<form id="new-project" class="form-horizontal hidden">
+			<fieldset>
+				<legend>New Project</legend>
+				<div class="control-group">
+					<label class="control-label" for="input01">Project Name</label>
+					<div class="controls">
+						<input type="text" class="input-xlarge" id="input01" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="select01">Client</label>
+					<div class="controls">
+						<select id="select01"> <option>-- Select client --</option> <option>Bad Robot</option> <option>Evil Genius</option> <option>Monsters Inc</option> </select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="textarea">Project Summary</label>
+					<div class="controls">
+						<textarea class="input-xlarge" id="textarea" rows="3"></textarea>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Create</button> <button class="btn">Cancel</button>
+				</div>
+
+
+			</fieldset>
+		</form>
+	</div>
+	{%for pindex in plist%}
+	{%if pIndex == pindex%}
+	<button>{{pindex}}</button>
+	{%else%}
+	<a href="{% url 'myadmin_ordersindex' pindex %}">{{pindex}}</a>
+	
+	{%endif%}
+	{%endfor%}
+
+
+    <!-- 主体结束 -->
+{%endblock%}

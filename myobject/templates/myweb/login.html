@@ -1,0 +1,121 @@
+{% load static from staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>小米商城</title>
+
+    <!-- Bootstrap -->
+    <link href="{% static 'myweb/public/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="{% static 'myweb/public/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{% static 'myweb/public/js/bootstrap.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'myweb/public/js/2.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/2.css' %}">
+</head>
+<body>
+    <script src="{% static 'myweb/public/js/jquery-1.12.4.min.js' %}"></script>
+    <!-- 背景图片 -->
+    <div class="container-fluid">
+        <div class="row hidden-xs">
+            <img src="{% static 'myweb/image/bg.png' %}" class="img-responsive bg" alt="">
+        </div>
+    </div>
+    <!-- 登录注册页面 -->
+    <div class="container-fluid">
+
+        <div class='row'>
+            
+            <div class='col-md-3 col-xs-12 dl'>
+            
+                <form id="edit-profile" class="form-horizontal" action="{% url 'dolog' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                    <div class='col-md-12'>
+                        <div class='col-md-12'>
+                            <!-- 登录扫码 -->
+                            <div class="dlsm">
+                                <a href="{% url 'login' %}" class="dlsm_dl">账号登录</a>
+                                <span>|</span>
+                                <a href="{% url 'zc' %}" class="dlsm_sm">注册账号</a>
+                            </div>
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            用户:<input name="username" class="zh" type="text"  placeholder="邮箱/手机号码/小米账号">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                            密码:<input name="passwd" class="mm" type="text"  placeholder="邮箱/手机号码/小米账号">
+                        </div>
+                        <div class='col-md-12'>
+                            <!-- 输入文本框 -->
+                        验证:<input type="text" name="code" class="zh" style="width:90px;"  />
+                        <img src="{% url 'verify'%}" style='margin-bottom: 10px' onclick="this.src='{% url 'verify' %}?sn='+Math.random()"/>
+                        <br />
+                        
+
+                        <div class='col-md-12'>
+                            <!-- 按钮 -->
+                            <button class="dlbt">立即登录</button>
+                        </div>
+                    </div>
+                    <div class='col-md-12'>
+                        <div class='col-md-12'>
+                            <!-- 注册和忘记密码 -->
+                            <div class="zcwj">
+                                <a href="" class="zcwj_zc">注册小米账号</a>
+                                <span>|</span>
+                                <a href="" class="zcwj_wj">忘记密码?</a>
+                            </div>
+                        </div>
+                        <!-- 其他登录 -->
+                        <div class='col-md-12'>
+                            <div class="qt">
+                                <div class="qt_2" style="text-align:'center'">其他方式登录</div>
+                            </div>
+                        </div>
+                        <!-- 其他登录方式 -->
+                        <div class='col-md-12'>
+                            <div class="qtdl">
+                                <ul class="qt_link">
+                                    <li class="qt_qq"><a href=""><img src="{% static 'myweb/image/qq.png' %}" alt=""></a></li>
+                                    <li class="qt_wb"><a href=""><img src="{% static 'myweb/image/weibo.png' %}" alt=""></a></li>
+                                    <li class="qt_zfb"><a href=""><img src="{% static 'myweb/image/zfb.png' %}" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </form>
+            </div>
+            
+
+        </div>
+        
+    </div>
+    <!-- 尾部 -->
+    <div class="container-fluid hidden-xs">
+        <div class='row'>
+            <div class='col-md-12 wb_zt1'>
+                <a>简体&nbsp;|&nbsp;繁体&nbsp;|&nbsp;English&nbsp;|&nbsp;常见问题</a>
+            </div>
+            <div class='col-md-12 wb_zt2'>
+                <p>小米公司版权所有-京ICP备10046444-京公网安备11010802020134号-京ICP证110507号</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+   
+</body>
+</html>

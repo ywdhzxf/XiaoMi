@@ -1,0 +1,82 @@
+{% extends "myadmin/base.html" %}
+
+ 
+{%block block_name%}
+<!-- 主体开始 -->
+
+	<h1>
+		订单状态更改
+	</h1>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_ordersupdate' order.id %}" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+
+			<div class="control-group">
+				<label class="control-label"  for="input01">会员ID</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" name='uid' value='{{ order.uid }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">联系人</label>
+				<div class="controls">
+					<input type="passwo" class="input-xlarge" readonly id="input01" name='linkman' value='{{ order.linkman }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">地址</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" name='address' value='{{ order.address }}'/>
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label class="control-label" for="input01">邮编</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" name='code' value='{{ order.code }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">电话</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" name='phone' value='{{ order.phone }}'/>
+				</div>
+			</div>
+		
+		
+			<div class="control-group">
+				<label class="control-label" for="input01">总金额</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" readonly id="input01" name='total' value='{{ order.total }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">状态</label>
+				<div class="controls">
+					{% if order.status == 0 %}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="1" />已发货
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="3" />无效订单
+					{% endif %}
+					{% if order.status == 2 %}
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="status" value="3" />无效订单
+					{% endif %}
+				</div>
+			</div>
+			
+
+									
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
+			</div>
+		</fieldset>
+	</form>
+
+<!-- 主体结束 -->
+{%endblock%}
+{%block block_js%}
+<script type="text/javascript">
+	$("input[name='status'][value='{{ order.status }}']").attr("checked", true);
+</script>
+{%endblock%}

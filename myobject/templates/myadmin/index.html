@@ -1,0 +1,28 @@
+{% extends "myadmin/base.html" %}
+
+
+{%block block_name%}
+ <!-- 主体开始 -->
+                   
+	<h1>
+		小米
+	</h1>
+	<div class="hero-unit">
+		<h2>
+			小米 为发烧而生!
+		</h2>
+		<p>
+			小米 为黑科技而努力!
+		</p>
+		<p>
+			<img src="/static/myweb/image/bg.png" class="img-responsive bg" alt="">
+		</p>
+	</div>
+	
+	<ul class="pager">
+		<li class="next">
+			<a href="{% url 'index' %}">More &rarr;</a>
+		</li>
+	</ul>
+    <!-- 主体结束 -->
+{%endblock%}

@@ -1,0 +1,14 @@
+{% extends "myweb/base.html" %}
+{% load static from staticfiles %}
+{%block block_js%}
+
+<script type="text/javascript" src="{% static 'myweb/public/js/1.js' %}"></script>
+{%endblock%}
+{%block block_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'myweb/public/css/1.css' %}">
+{%endblock%}
+
+
+{%block block_index%}
+	<h1>{{ info }}</h1>
+{%endblock%}

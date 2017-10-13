@@ -1,0 +1,54 @@
+{% extends "myadmin/base.html" %}
+
+ 
+{%block block_name%}
+<!-- 主体开始 -->
+
+	<h1>
+		商品信息分类表
+	</h1>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_typesinsert' %}" enctype="multipart/form-data" method="post">
+	<input type="hidden" name="pid" value="{{ pid }}"/>
+    <input type="hidden" name="path" value="{{ path }}"/>
+	{% csrf_token %}
+		<fieldset>
+<!-- 			<legend>添加商品分类</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">分类名称</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='name'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">父类ID</label>
+				<div class="controls">
+					<select class="form-control" name="pid">
+					{% for x in stulist %}
+				    <option >{{ x.pid }}:{{ x.name }}</option>  
+					{% endfor %}
+				</select>
+				</div>
+			</div> -->
+			 <div class="control-group">
+                <label class="control-label" for="input01">父类别名称：</label>
+                <div class="controls">
+                    <input type="text" name="pname" class="input-xlarge" id="input01" value="" placeholder="{{name}}"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input01">类别名称：</label>
+                <div class="controls">
+                    <input type="text" name="name" class="input-xlarge" id="input01"/>
+                </div>
+            </div>                
+
+										
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">添加</button> <button class="btn">Cancel</button>
+			</div>
+		</fieldset>
+
+	</form>
+
+<!-- 主体结束 -->
+{%endblock%}

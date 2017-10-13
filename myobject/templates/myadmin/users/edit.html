@@ -1,0 +1,114 @@
+{% extends "myadmin/base.html" %}
+
+ 
+{%block block_name%}
+<!-- 主体开始 -->
+
+	<h1>
+		Edit Your Profile
+	</h1>
+	<form id="edit-profile" class="form-horizontal" action="{% url 'myadmin_usersupdate' user.id %}" enctype="multipart/form-data" method="post">
+	{% csrf_token %}
+		<fieldset>
+			<legend>编辑用户信息</legend>
+			<div class="control-group">
+				<label class="control-label" for="input01">username</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='username' value='{{ user.username }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">name</label>
+				<div class="controls">
+					<input type="passwo" class="input-xlarge" id="input01" name='name' value='{{ user.name }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">passwd</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='passwd' value='{{ user.passwd }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">sex</label>
+				<div class="controls">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input value="1" type="radio" name='sex' class='sex1' />男
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input value="0" type="radio" name='sex' class='sex0' />女
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">address</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='address' value='{{ user.address }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">code</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='code' value='{{ user.code }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">phone</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='phone' value='{{ user.phone }}'/>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">email</label>
+				<div class="controls">
+					<input type="text" class="input-xlarge" id="input01" name='email' value='{{ user.email }}'/>
+					
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="input01">state</label>
+				<div class="controls">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="state" value="1" />启用
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="state" value="2" />禁用
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="state" value="0" />后台管理员
+				</div>
+			</div>
+			
+			<!-- <div class="control-group">
+				<label class="control-label" for="fileInput">Photo</label>
+				<div class="controls">
+					<input class="input-file" id="fileInput" type="file" />
+				</div>
+			</div>						
+			<div class="control-group">
+				<label class="control-label" for="textarea">Biography</label>
+				<div class="controls">
+					<textarea class="input-xlarge" id="textarea" rows="4">Web technology junkie who writes innovative and bestselling technical books. Also enjoys Sunday bicycle rides and all "good" comedy.</textarea>
+				</div>
+			</div> -->
+									
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary">Save</button> <button class="btn">Cancel</button>
+			</div>
+		</fieldset>
+	</form>
+
+<!-- 主体结束 -->
+{%endblock%}
+{%block block_js%}
+
+<script type="text/javascript">
+	
+	   
+	 	
+	$("input[name='sex'][value='{{user.sex}}']").attr("checked", true);
+	 
+	 	
+	$("input[name='state'][value='{{user.state}}']").attr("checked", true);
+	
+	   
+
+	
+</script>
+{%endblock%}
